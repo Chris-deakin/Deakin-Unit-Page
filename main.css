@@ -1,25 +1,20 @@
-
-
-h1 {
-  font-size: 40px;
-  font-family: Arial
-}
-h2 {
-  font-size: 25px;
-  font-family: Arial
-}
-h3 {
-  font-family: Arial
-}
-p {
-  font-size: 14px;
-  font-family: Arial
-}
-th, td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-  font-family: Arial;
+/* UI Designer - Header styles */
+.header {
+    background-color: darkcyan;        /* exact color from the task PDF */
+    padding: 15px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;         /* logo on the right, like the PDF example */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-tr:nth-child(odd) {background-color: #f2f2f2;}
+.logo {
+    width: 100px;
+    height: auto;
+    animation: logoPop 1.2s ease-out;   /* simple animation */
+}
+
+@keyframes logoPop {
+    0% { opacity: 0; transform: scale(0.7); }
+    100% { opacity: 1; transform: scale(1); }
+}
