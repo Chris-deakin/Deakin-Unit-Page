@@ -1,20 +1,165 @@
-/* UI Designer - Header styles */
-.header {
-    background-color: darkcyan;        /* exact color from the task PDF */
-    padding: 15px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;         /* logo on the right, like the PDF example */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; }
+
+/* Top bar */
+.top-bar {
+  background-color: #002855;
+  color: white;
+  font-size: 13px;
+  padding: 8px 0;
+  text-align: center;
 }
 
+/* Main Header */
+.main-header {
+  background: linear-gradient(90deg, #0e6689 0%, #0f729a 100%);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  animation: headerFadeIn 1s ease forwards;
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* Logo */
 .logo {
-    width: 100px;
-    height: auto;
-    animation: logoPop 1.2s ease-out;   /* simple animation */
+  width: 70px;
+  height: auto;
+  transition: all 0.4s ease;
+  animation: logoPop 1.5s ease forwards;
+}
+.logo:hover { transform: scale(1.1) rotate(8deg); filter: drop-shadow(0 0 12px #19fdee); }
+
+/* Nav links */
+.nav-menu {
+  display: flex;
+  gap: 38px;                    
+  flex-wrap: wrap;
 }
 
-@keyframes logoPop {
-    0% { opacity: 0; transform: scale(0.7); }
-    100% { opacity: 1; transform: scale(1); }
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16.5px;
+  position: relative;
+  transition: color 0.3s ease;
 }
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  bottom: -4px;
+  left: 0;
+  background-color: #19fdee;
+  transition: width 0.4s ease;
+}
+
+.nav-link:hover::after { width: 100%; }
+.nav-link:hover { color: #19fdee; }
+
+/* Search Bar */
+/* Search Bar - White text */
+.search-container {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50px;
+  padding: 8px 16px;
+  transition: all 0.4s ease;
+}
+
+.search-input {
+  background: transparent;
+  border: none;
+  color: white;                    /* ← Pure white text */
+  width: 240px;
+  outline: none;
+  font-size: 15.5px;
+  padding: 6px 12px;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.75);   /* ← White placeholder */
+}
+
+.search-input:focus {
+  width: 320px;
+  background: rgba(255,255,255,0.3);
+}
+
+.search-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.search-btn:hover { transform: scale(1.2); }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: #002855;
+  padding: 20px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  animation: slideDown 0.4s ease;
+}
+.mobile-menu.active { display: flex; }
+.mobile-menu a {
+  color: white;
+  padding: 12px 0;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Animations */
+@keyframes headerFadeIn { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes logoPop { from { opacity: 0; transform: scale(0.6); } to { opacity: 1; transform: scale(1); } }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .desktop-nav { display: none; }
+  .hamburger { display: block; }
+  .search-input { width: 160px; }
+  .search-input:focus { width: 220px; }
+}
+
+/* Unit hero */
+.unit-hero { text-align: center; padding: 50px 20px; background: #f8f8f8; }
+.unit-hero h1 { color: #002855; font-size: 32px; }
+.unit-hero p { color: #555; font-size: 20px; }
+
+/* Content */
+table { margin: 0 auto; width: 100%; max-width: 1000px; }
+td { padding: 14px; border-bottom: 1px solid #ddd; }
