@@ -1,29 +1,171 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: Arial, sans-serif; }
 
-
-h1 {
-  font-size: 40px;
-  font-family: Arial
-}
-h2 {
-  font-size: 25px;
-  font-family: Arial
-}
-h3 {
-  font-family: Arial
-}
-p {
-  font-size: 14px;
-  font-family: Arial
-}
-th, td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-  font-family: Arial;
+/* Top bar */
+.top-bar {
+  background-color: #002855;
+  color: white;
+  font-size: 13px;
+  padding: 8px 0;
+  text-align: center;
 }
 
-div {
+/* div property was part of the UI solo task. We opted for custom design, this conflicts with our design but we have included a comment to acknowledge that we saw this section of the task sheet.
+/* div {
   background-color: blue;
   text-align: right;
+} */
+
+/* Main Header */
+.main-header {
+  background: linear-gradient(90deg, #0e6689 0%, #0f729a 100%);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  animation: headerFadeIn 1s ease forwards;
 }
-tr:nth-child(odd) {background-color: #f2f2f2;}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+/* Logo */
+.logo {
+  width: 70px;
+  height: auto;
+  transition: all 0.4s ease;
+  animation: logoPop 1.5s ease forwards;
+}
+.logo:hover { transform: scale(1.1) rotate(8deg); filter: drop-shadow(0 0 12px #19fdee); }
+
+/* Nav links */
+.nav-menu {
+  display: flex;
+  gap: 38px;                    
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16.5px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 3px;
+  bottom: -4px;
+  left: 0;
+  background-color: #19fdee;
+  transition: width 0.4s ease;
+}
+
+.nav-link:hover::after { width: 100%; }
+.nav-link:hover { color: #19fdee; }
+
+/* Search Bar */
+/* Search Bar - White text */
+.search-container {
+  display: flex;
+  align-items: center;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50px;
+  padding: 8px 16px;
+  transition: all 0.4s ease;
+}
+
+.search-input {
+  background: transparent;
+  border: none;
+  color: white;                    /* ← Pure white text */
+  width: 240px;
+  outline: none;
+  font-size: 15.5px;
+  padding: 6px 12px;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.75);   /* ← White placeholder */
+}
+
+.search-input:focus {
+  width: 320px;
+  background: rgba(255,255,255,0.3);
+}
+
+.search-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.search-btn:hover { transform: scale(1.2); }
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: #002855;
+  padding: 20px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  animation: slideDown 0.4s ease;
+}
+.mobile-menu.active { display: flex; }
+.mobile-menu a {
+  color: white;
+  padding: 12px 0;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Animations */
+@keyframes headerFadeIn { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes logoPop { from { opacity: 0; transform: scale(0.6); } to { opacity: 1; transform: scale(1); } }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .desktop-nav { display: none; }
+  .hamburger { display: block; }
+  .search-input { width: 160px; }
+  .search-input:focus { width: 220px; }
+}
+
+/* Unit hero */
+.unit-hero { text-align: center; padding: 50px 20px; background: #f8f8f8; }
+.unit-hero h1 { color: #002855; font-size: 32px; }
+.unit-hero p { color: #555; font-size: 20px; }
+
+/* Content */
+table { margin: 0 auto; width: 100%; max-width: 1000px; }
+td { padding: 14px; border-bottom: 1px solid #ddd; }

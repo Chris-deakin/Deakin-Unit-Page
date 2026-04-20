@@ -5,36 +5,99 @@
 <link rel="stylesheet" type="text/css" media="screen" href="main.css"/>
 </head>
 <body>
-<h1>SIT223-SIT753 - Professional Practice in IT</h1>
-<h2>Unit details</h2>
-<table style="width:100%">
-    <tr>
-        <td>Year:</td>
-        <td>2023 unit information</td>
-    </tr>
-    <tr>
-        <td>Enrolement modes:</td>
-        <td>Trimester 1: Burwood (Melbourne), Geelong, Cloud (online)</td>
-    </tr>
-    <tr>
-        <td>Credit point(s):</td>
-        <td>1</td>
-    </tr>
-    <tr>
-        <td>Unit Chair:</td>
-        <td>Trimester 1: Azadeh Ghari Neiat</td>
-    </tr>
-    <tr>
-        <td>Scheduled Learning Activities:</td>
-        <td>1 x 3 hour active class per week, weekly drop in support.</td>
-    </tr>
-<table>
-<h3> Content</h3>
-<p>
-To be successful IT graduates need to understand the use of industry tools and practices,
-the ways these tools work and connect together, and the underlying professional, ethical,
-and teamwork knowledge and skills needed to put these into practice in a professional manner.
-</p>
-<a href="https://www.deakin.edu.au/students/enrolment-and-fees/fees"> > Current students</a>
+
+  <!-- Thin top bar -->
+  <div class="top-bar">
+    <div class="container">
+      Deakin University | SIT223-SIT753 - Professional Practice in IT
+    </div>
+  </div>
+
+  <!-- MAIN HEADER -->
+  <header class="main-header" id="top">
+    <div class="container header-content">
+
+      <!-- Logo -->
+      <a href="#top" class="logo-link">
+        <img src="logo.svg" alt="Deakin University" class="logo">
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="nav-menu desktop-nav">
+        <a href="#top" class="nav-link">Home</a>
+        <a href="#unit-details" class="nav-link">Unit Details</a>
+        <a href="#unit-content" class="nav-link">Unit Content</a>
+        <a href="https://www.deakin.edu.au/students/enrolment-and-fees/fees" target="_blank" class="nav-link">Enrolment &amp; Fees</a>
+        <a href="https://www.deakin.edu.au/" target="_blank" class="nav-link">Deakin Home</a>
+      </nav>
+
+      <!-- Search Bar -->
+      <div class="search-container">
+        <input type="text" id="search-input" class="search-input" placeholder="Search unit resources..." aria-label="Search">
+        <button onclick="performSearch()" class="search-btn">🔎</button>
+      </div>
+
+      <!-- Hamburger (mobile) -->
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">☰</button>
+
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#top" onclick="toggleMobileMenu()">Home</a>
+      <a href="#unit-details" onclick="toggleMobileMenu()">Unit Details</a>
+      <a href="#unit-content" onclick="toggleMobileMenu()">Unit Content</a>
+      <a href="https://www.deakin.edu.au/students/enrolment-and-fees/fees" target="_blank" onclick="toggleMobileMenu()">Enrolment &amp; Fees</a>
+      <a href="https://www.deakin.edu.au/" target="_blank" onclick="toggleMobileMenu()">Deakin Home</a>
+    </div>
+  </header>
+
+  <!-- Unit Title -->
+  <div class="unit-hero">
+    <h1>SIT223-SIT753</h1>
+    <p>Professional Practice in IT</p>
+  </div>
+
+  <!-- Your content -->
+  <section id="unit-details" style="padding: 40px 20px; max-width: 1000px; margin: 0 auto;">
+    <h2>Unit details</h2>
+    <table style="width:100%; border-collapse: collapse;">
+      <tr><td>Year:</td><td>2023 unit information</td></tr>
+      <tr><td>Enrolment modes:</td><td>Trimester 1: Burwood (Melbourne), Geelong, Cloud (online)</td></tr>
+      <tr><td>Credit point(s):</td><td>1</td></tr>
+      <tr><td>Unit Chair:</td><td>Trimester 1: Azadeh Ghari Neiat</td></tr>
+    </table>
+  </section>
+
+  <section id="unit-content" style="padding: 40px 20px; max-width: 1000px; margin: 0 auto;">
+    <h3>Content</h3>
+    <p>To be successful IT graduates need to understand the use of industry tools and practices, the ways these tools work and connect together, and the underlying professional, ethical, and teamwork knowledge and skills needed to put these into practice in a professional manner.</p>
+  </section>
+
+  <!-- Tiny JS for search + mobile menu -->
+  <script>
+    function performSearch() {
+      const query = document.getElementById('search-input').value.trim();
+      if (query) {
+        alert(`🔍 Searching for: "${query}"\n\n(In a real site this would filter content or link to results)`);
+      } else {
+        alert("Please type something to search!");
+      }
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('active');
+    }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+      const hamburger = document.getElementById('hamburger');
+      const menu = document.getElementById('mobile-menu');
+      if (!hamburger.contains(e.target) && !menu.contains(e.target)) {
+        menu.classList.remove('active');
+      }
+    });
+  </script>
 </body>
 </html>
